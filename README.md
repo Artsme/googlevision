@@ -14,8 +14,8 @@ For authentication in Google Cloud you have to create a service account, generat
 
 Run from the topmost folder:
 ```
-	npm install
-	npm run start
+npm install
+npm run start
 ```    
 Then open your browser and navigate to:
 ```
