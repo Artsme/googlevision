@@ -1,2 +1,5 @@
+.idea
 dist
 node_modules
+google-vision-credentials.json
+
