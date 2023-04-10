@@ -1,14 +1,11 @@
 # Test image annotation with Google Vision API
 
 ## Purpose
-Accesses Google Vision API and returns a list of annotated labels for an image provided by a URL.
+Takes an image URL, detects its labels using Google Vision API and stores them in MongoDB collections.
 
 ## Requirements
 
 - [Node.js](https://nodejs.org/)
-- [Google Cloud CLI](https://cloud.google.com/sdk/docs/install)
-
-For authentication in Google Cloud you have to create a service account, generate a JSON key file, activate the service account and set GOOGLE_APPLICATION_CREDENTIALS environment variable to the location of the downloaded JSON key file. See [this guide](https://cloud.google.com/vision/product-search/docs/auth) for detailed instructions.
 
 ## Usage
 
@@ -19,6 +16,19 @@ npm run start
 ```    
 Then open your browser and navigate to:
 ```
-http://localhost:3000/image/annotate?imageUrl=<an openly accessible URL of the image>
+http://localhost:3000/label/collect?imageUrl=<an openly accessible URL of the image>
 ```
 Parameter 'imageUrl' can be omitted. A default image will be processed in that case.
+
+Each label returned by Google Vision API will be store in MongoDB collection 'labels'. Here is its schema:
+
+```
+{
+  code: {type: String, index: true, unique: true},
+  translations: [{language: String, title: String}],
+  enabled: {type: Boolean, default: true}
+}
+```
+
+'code' is the label returned by Google
+'translations' array stores titles of the label in diffrenet languages

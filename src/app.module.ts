@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ImageModule } from './image/image.module'
+import { LabelModule } from './label/label.module'
 
 @Module
 ({
-    imports: [ImageModule]
+    imports: [LabelModule]
 })
 
 export class AppModule
