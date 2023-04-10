@@ -1,3 +1,4 @@
+
 # Test image annotation with Google Vision API
 
 ## Purpose
@@ -21,7 +22,6 @@ http://localhost:3000/label/collect?imageUrl=<an openly accessible URL of the im
 Parameter 'imageUrl' can be omitted. A default image will be processed in that case.
 
 Each label returned by Google Vision API will be store in MongoDB collection 'labels'. Here is its schema:
-
 ```
 {
   code: {type: String, index: true, unique: true},
@@ -29,6 +29,6 @@ Each label returned by Google Vision API will be store in MongoDB collection 'la
   enabled: {type: Boolean, default: true}
 }
 ```
-
-'code' is the label returned by Google
-'translations' array stores titles of the label in diffrenet languages
+- 'code' is the label returned by Google.
+- 'translations' array stores titles of the label in different languages. The English title (having language = 'en') coincides with the code. So far only the English title is stored.
+- 'enabled' flag allows to disable certain labels if required. Originally it is set to true by default.
